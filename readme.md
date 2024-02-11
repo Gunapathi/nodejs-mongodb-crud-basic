@@ -1,0 +1,1 @@
+# NodeJS - MongoDB Basic CRUD support
