@@ -19,11 +19,23 @@ app.get('/', async (req, res) => { //async function (waiting for db connection r
     let books = await cursor.toArray(); // return a promise
 
     let message = '';
-    let edit_id, edit_book;
 
+    // EDIT BOOK
+    let edit_id, edit_book;
     if (req.query.edit_id) {
+
         edit_id = req.query.edit_id;
         edit_book = await collection.findOne({ _id: new ObjectID(edit_id) });
+
+    }
+
+    // DELETE BOOK
+    if (req.query.delete_id) {
+
+        delete_id = req.query.delete_id;
+        await collection.deleteOne({ _id: new ObjectID(delete_id) });
+
+        return res.redirect('/?status=3')
     }
 
     switch (req.query.status) {
@@ -33,6 +45,10 @@ app.get('/', async (req, res) => { //async function (waiting for db connection r
 
         case '2':
             message = 'Updated Successfully';
+            break;
+
+        case '3':
+            message = 'Deleted Successfully';
             break;
 
         default:
