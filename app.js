@@ -3,8 +3,12 @@ const app = express();
 const bodyParser = require('body-parser'); //get data from request body
 const exhbs = require('express-handlebars'); //engine name
 
-const dbObject = require('./db.js');
-const ObjectID = dbObject.ObjectID;
+const dbObject = require('./db');
+const BookModel = require('./models/bookModel');
+// const ObjectID = dbObject.ObjectID;
+
+// DATABASE CONNECTION STRING
+dbObject.getDatabase();
 
 app.engine('hbs', exhbs.engine({ layoutsDir: 'views/', defaultLayout: "main", extname: 'hbs' }))
 app.set('view engine', 'hbs');
@@ -13,25 +17,26 @@ app.set('views', 'views')
 app.use(bodyParser.urlencoded({ extended: true })); //middleware to get data from request body
 
 app.get('/', async (req, res) => { //async function (waiting for db connection response)
-    let database = await dbObject.getDatabase(); //returns a promise (db connection)
-    const collection = database.collection('books'); //create a collection inside selected database
-    const cursor = collection.find({})
-    let books = await cursor.toArray(); // return a promise
+    // MONGO CLIENT SETUP
+    // let database = await dbObject.getDatabase(); //returns a promise (db connection)
+    // const collection = database.collection('books'); //create a collection inside selected database
+    // const cursor = collection.find({})
+    // let books = await cursor.toArray(); // return a promise
+
+    // MONGOOSE SETUP
+    let books = await BookModel.find({})
 
     let message = '';
 
     // EDIT BOOK
     let edit_id, edit_book;
     if (req.query.edit_id) {
-
         edit_id = req.query.edit_id;
         edit_book = await collection.findOne({ _id: new ObjectID(edit_id) });
-
     }
 
     // DELETE BOOK
     if (req.query.delete_id) {
-
         delete_id = req.query.delete_id;
         await collection.deleteOne({ _id: new ObjectID(delete_id) });
 
@@ -59,11 +64,16 @@ app.get('/', async (req, res) => { //async function (waiting for db connection r
 })
 
 app.post('/store_book', async (req, res) => {
-    let database = await dbObject.getDatabase(); //returns a promise (db connection)
-    const collection = database.collection('books'); //create a collection inside selected database
+    // MONGO CLIENT SETUP
+    // let database = await dbObject.getDatabase(); //returns a promise (db connection)
+    // const collection = database.collection('books'); //create a collection inside selected database
 
-    let book = { name: req.body.title, author: req.body.author };
-    await collection.insertOne(book);
+    // let book = { name: req.body.title, author: req.body.author };
+    // await collection.insertOne(book);
+
+    // MONGOOSE SETUP
+    const book = new BookModel({ name: req.body.title, author: req.body.author });
+    book.save(); // works same as insertOne() on a above code
 
     return res.redirect('/?status=1')
 })
