@@ -10,7 +10,15 @@ const BookModel = require('./models/bookModel');
 // DATABASE CONNECTION STRING
 dbObject.getDatabase();
 
-app.engine('hbs', exhbs.engine({ layoutsDir: 'views/', defaultLayout: "main", extname: 'hbs' }))
+app.engine('hbs', exhbs.engine({
+    layoutsDir: 'views/',
+    defaultLayout: "main",
+    extname: 'hbs',
+    runtimeOptions: {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true,
+    }
+}))
 app.set('view engine', 'hbs');
 app.set('views', 'views')
 
