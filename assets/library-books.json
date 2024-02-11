@@ -1,0 +1,82 @@
+[
+    {
+        "name": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald"
+    },
+    {
+        "name": "To Kill a Mockingbird",
+        "author": "Harper Lee"
+    },
+    {
+        "name": "1984",
+        "author": "George Orwell"
+    },
+    {
+        "name": "Pride and Prejudice",
+        "author": "Jane Austen"
+    },
+    {
+        "name": "The Catcher in the Rye",
+        "author": "J.D. Salinger"
+    },
+    {
+        "name": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling"
+    },
+    {
+        "name": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien"
+    },
+    {
+        "name": "The Hobbit",
+        "author": "J.R.R. Tolkien"
+    },
+    {
+        "name": "The Chronicles of Narnia",
+        "author": "C.S. Lewis"
+    },
+    {
+        "name": "The Hitchhiker's Guide to the Galaxy",
+        "author": "Douglas Adams"
+    },
+    {
+        "name": "Brave New World",
+        "author": "Aldous Huxley"
+    },
+    {
+        "name": "The Da Vinci Code",
+        "author": "Dan Brown"
+    },
+    {
+        "name": "The Shining",
+        "author": "Stephen King"
+    },
+    {
+        "name": "The Girl with the Dragon Tattoo",
+        "author": "Stieg Larsson"
+    },
+    {
+        "name": "Moby-Dick",
+        "author": "Herman Melville"
+    },
+    {
+        "name": "Alice's Adventures in Wonderland",
+        "author": "Lewis Carroll"
+    },
+    {
+        "name": "One Hundred Years of Solitude",
+        "author": "Gabriel García Márquez"
+    },
+    {
+        "name": "The Hunger Games",
+        "author": "Suzanne Collins"
+    },
+    {
+        "name": "The Kite Runner",
+        "author": "Khaled Hosseini"
+    },
+    {
+        "name": "The Alchemist",
+        "author": "Paulo Coelho"
+    }
+]
